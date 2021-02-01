@@ -14,6 +14,10 @@ body{
 }
 
 .container{
+    position: absolute;
+    top:5%;
+    left:10%;
+    right:10%;
     width: 80%;
     height: 95%;
     min-width:950px ;
@@ -21,19 +25,39 @@ body{
 }
 
 .left{
-    width: 35%;
+    width: 30%;
     height: 100%;
 }
 
 .right{
-    width: 65%;
+    width: 70%;
     height: 100%;
 }
 
+.header-sinistro{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
 
+.logo-utente{
+    padding: 10px;
+}
 
+.modificato{
+    color:black;
+    font-weight: 600;
+}
+
+.loghi i{
+    padding:10px;
+    font-size: 20px;
+    color: grey;
+}
 
 img{
+    border-radius:50%;
     height: 40px;
     width: 40px;
 }
