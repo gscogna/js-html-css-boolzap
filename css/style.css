@@ -6,8 +6,8 @@
 
 img{
     border-radius:50%;
-    height: 40px;
-    width: 40px;
+    height: 52px;
+    width: 52px;
 }
 
 a{
@@ -39,11 +39,13 @@ body{
 .left{
     width: 30%;
     height: 100%;
+    float: left;
 }
 
 .right{
     width: 70%;
     height: 100%;
+    float:left;
 }
 
 /* 1 pezzetto sinistro */
@@ -54,13 +56,17 @@ body{
     justify-content: space-between;
     align-items: center;
     height: 10%;
+    border:1px solid lightgrey;
 }
 
 .logo-utente{
     padding: 10px;
+    
 }
 
 .modificato{
+    display: flex;
+    flex-grow: 1;
     color:black;
     font-weight: 600;
 }
@@ -79,6 +85,7 @@ body{
     display: flex;
     padding: 25px;
     height: 12%;
+    border-right:1px solid lightgrey;
 }
 
 .disclaimer-sinistro:hover{
@@ -109,6 +116,7 @@ body{
 .searchbar-sinistro{
     padding: 5px;
     height: 8%;
+    border:1px solid lightgrey;
 }
 
 .searchbar-sinistro i{
@@ -131,9 +139,61 @@ body{
     height: 70%;
     background: #fff;
     overflow-y: scroll;
+    border:1px solid lightgrey;
 }
 
 /* 1 pezzettino destro */
 .header-destro{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 10%;
+    border-bottom:1px solid lightgrey;
+}
 
+
+.info-utente{
+    display: column;
+    flex-grow: 1
+    ;
+}
+
+.info-utente p:first-child{
+    color: black;
+    font-weight: bold;
+}
+
+.info-utente p:last-child{
+    color:grey;
+}
+
+/* 2 pezzettino destro */
+.corpo-destro{
+    height: 80%;
+    width: 100%;
+    background-image:url(../img/mine.jpg);
+    overflow-y: scroll;
+}
+
+/* 3 pezzettino destro */
+
+.chatbox-destro{
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chatbox-destro i{
+    font-size: 25px;
+    color:grey;
+}
+
+
+.chatbox-destro input{
+    width: 90%;
+    outline: 0;
+    padding: 18px 20px;
+    margin: 0 8px;
 }
