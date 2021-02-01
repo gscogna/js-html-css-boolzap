@@ -99,7 +99,7 @@ body{
 }
 
 .logo-bell i{
-    padding:10px;
+    padding:15px;
 }
 
 .message-bell{
@@ -141,6 +141,17 @@ body{
     overflow-y: scroll;
     border:1px solid lightgrey;
 }
+
+.contatti .contatto-primo ul li{
+    padding:25px;
+}
+
+.contatti .contatto-primo ul li span{
+    vertical-align: top;
+    font-weight: bold;
+    font-size: 20px;
+}
+
 
 /* 1 pezzettino destro */
 .header-destro{
