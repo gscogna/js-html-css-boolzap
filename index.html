@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
         integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
         crossorigin="anonymous" />
@@ -18,9 +19,9 @@
         <div class="left">
         <div class="header-sinistro">
             <div class="logo-utente">
-                <img src="img/avatar_io.jpg" alt="nomeutente-avatar">
+                <img src="img/avatar_0.gif" alt="nomeutente-avatar">
             </div>
-            <span class="modificato">Nome Utente</span>
+            <span class="modificato">Gerrano &#128077;&#128512;</span>
 
             <div class="loghi">
                 <i class="fas fa-circle-notch"></i>
@@ -40,26 +41,15 @@
             </div>
         </div>
         <div class="searchbar-sinistro">
+            <div><i class="fas fa-search"></i></div>
             <input type="text" placeholder="Cerca o inizia una nuova chat">
         </div>
         <div class="contatti">
-            <div class="contatto-primo" v-for="info in contacts">
+            <div class="contatto-primo" v-for="(info,index) in contacts">
                 <ul>
                     <li>
-                        <img :src="avatar" alt="michele-avatar">
-                        <span>{{contacts.name}}</span>
-                    </li>
-                    <li>
-                        <img src="img/avatar_2.jpg" alt="fabio-avatar">
-                        <span>Fabio</span>
-                    </li>
-                    <li>
-                        <img src="img/avatar_3.jpg" alt="samuele-avatar">
-                        <span>Samuele</span>
-                    </li>
-                    <li>
-                        <img src="img/avatar_4.jpg" alt="luisa-avatar">
-                        <span>Luisa</span>
+                        <img :src="info.avatar" alt="avatar">
+                        <span>{{info.name}}</span>
                     </li>
                 </ul>
             </div>
