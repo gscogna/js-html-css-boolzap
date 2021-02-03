@@ -169,21 +169,6 @@ body{
 }
 
 
-.info-utente{
-    display: column;
-    flex-grow: 1
-    ;
-}
-
-.info-utente p:first-child{
-    color: black;
-    font-weight: bold;
-}
-
-.info-utente p:last-child{
-    color:grey;
-}
-
 /* 2 pezzettino destro */
 .corpo-destro{
     height:calc(100% - 90px - 100px);
@@ -193,20 +178,20 @@ body{
     position:relative;
 }
 
-.message-sent{
+.inviato{
     background: #D5F9BA;
     float: right;
     clear:both
 }
 
-.format{
+.message{
     position: relative;
     margin:5px 15px;
     padding:15px 15px 20px 15px;
     border-radius: 10px;
 }
 
-.message-received{
+.ricevuto{
     background: white;
     float: left;
     clear:both;

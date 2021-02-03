@@ -45,11 +45,11 @@
             <input type="text" placeholder="Cerca o inizia una nuova chat">
         </div>
         <div class="contatti">
-            <div class="contatto-primo" v-for="(info,index) in contacts">
+            <div class="contatto-primo" v-for="(contact,index) in contacts" :class="(index === contatore) ? 'contatore' :contact" @click="cambio(index)" >
                 <ul>
                     <li>
-                        <img :src="info.avatar" alt="avatar">
-                        <span>{{info.name}}</span>
+                        <img :src="contact.avatar" alt="">
+                        <span>{{contact.name}}</span>
                     </li>
                 </ul>
             </div>
@@ -60,10 +60,10 @@
         <div class="right">
             <div class="header-destro">
                 <div class="logo-utente">
-                    <img src="img/avatar_1.jpg" alt="michele-avatar">
+                    <img :src="contacts[contatore].avatar" alt="">
                     </div>
                     <div class="info-utente">
-                        <p>Michele</p>
+                        <p><strong>{{contacts[contatore].name}}</strong></p>
                         <p>ultimo accesso oggi alle:</p>
                     </div>
                 <div class="loghi">
@@ -74,13 +74,13 @@
             </div>
             <!-- sezione della chat -->
             <div class="corpo-destro">
-                <div class="message-sent format">
+                <div class="message inviato">
                     <p>Ma quanto parla federico crudo?</p>
                 </div>
-                <div class="message-sent format">
+                <div class="message inviato">
                     <p> Vincenzo anche non scherza..</p>
                 </div>
-                <div class="message-received format">
+                <div class="message ricevuto">
                     <p>si lo so!</p>
                 </div>
             </div>
