@@ -74,14 +74,15 @@
             </div>
             <!-- sezione della chat -->
             <div class="corpo-destro">
-                <div class="fumetto" :class="sms.status" v-for="(sms,index)in contacts[contatore].messages">
-                    {{sms.text}}
+                <div class="fumetto" :class="sms.status" v-for=" (sms,index) in contacts[contatore].messages">
+                    <p>{{sms.text}}</p>
+                    <p><small>{{sms.date}}</small></p>
                 </div>
             </div>
             <!-- sezione dell input messaggio -->
             <div class="chatbox-destro">
                 <i class="far fa-smile"></i>
-                <input type="text" placeholder="scrivi un messaggio" @keyup.enter="">
+                <input type="text" placeholder="scrivi un messaggio" @keyup.enter="addMessage"  v-model="messaggioVuoto">
                 <i class="fas fa-microphone"></i>
             </div>
         </div>  

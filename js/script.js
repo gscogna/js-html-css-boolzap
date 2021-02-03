@@ -1,6 +1,7 @@
 let app = new Vue ({
     el:'#app',
     data:{
+        messaggioVuoto:" ",
         contatore:0,
         contacts: [
             {
@@ -93,6 +94,10 @@ let app = new Vue ({
         // funzione per cambiare indice contatti
         cambio(indice){
             this.contatore = indice 
+        },
+
+        addMessage(){
+            
         }
     }
 
