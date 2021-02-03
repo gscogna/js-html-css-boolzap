@@ -157,6 +157,9 @@ body{
     font-size: 20px;
 }
 
+.contatti .contatto-primo:hover{
+    background-color: lightgray;
+}
 
 /* 1 pezzettino destro */
 .header-destro{
@@ -166,6 +169,12 @@ body{
     align-items: center;
     height: 90px;
     border-bottom:1px solid lightgrey;
+}
+
+.info-utente{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 
@@ -178,20 +187,20 @@ body{
     position:relative;
 }
 
-.inviato{
+.sent{
     background: #D5F9BA;
     float: right;
     clear:both
 }
 
-.message{
+.fumetto{
     position: relative;
     margin:5px 15px;
     padding:15px 15px 20px 15px;
     border-radius: 10px;
 }
 
-.ricevuto{
+.received{
     background: white;
     float: left;
     clear:both;

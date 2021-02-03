@@ -74,20 +74,14 @@
             </div>
             <!-- sezione della chat -->
             <div class="corpo-destro">
-                <div class="message inviato">
-                    <p>Ma quanto parla federico crudo?</p>
-                </div>
-                <div class="message inviato">
-                    <p> Vincenzo anche non scherza..</p>
-                </div>
-                <div class="message ricevuto">
-                    <p>si lo so!</p>
+                <div class="fumetto" :class="sms.status" v-for="(sms,index)in contacts[contatore].messages">
+                    {{sms.text}}
                 </div>
             </div>
             <!-- sezione dell input messaggio -->
             <div class="chatbox-destro">
                 <i class="far fa-smile"></i>
-                <input type="text" placeholder="scrivi un messaggio">
+                <input type="text" placeholder="scrivi un messaggio" @keyup.enter="">
                 <i class="fas fa-microphone"></i>
             </div>
         </div>  
