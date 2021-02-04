@@ -1,7 +1,7 @@
 let app = new Vue ({
     el:'#app',
     data:{
-        messaggioVuoto:" ",
+        messaggioVuoto:"",
         contatore:0,
         contacts: [
             {
@@ -90,15 +90,48 @@ let app = new Vue ({
             },
         ]
     },
+    mounted(){
+        let timerID = setTimeout(rispostaAuto,1000);
+        clearTimeout(timerID);
+    },
+
     methods:{
         // funzione per cambiare indice contatti
         cambio(indice){
-            this.contatore = indice 
+            this.contatore = indice ;
+        },
+        
+        // funzione per inserire del testo nella chatbox
+        addMessage(){
+            if (this.messaggioVuoto.length > 0){
+                let nuovoMessagio = {
+                    date:'15:30',
+                    text: this.messaggioVuoto,
+                    status:'sent'
+                };
+                this.contacts[this.contatore].messages.push(nuovoMessagio);
+                this.messaggioVuoto ='';
+            }
         },
 
-        addMessage(){
-            
-        }
+        // funzione per la risposta automatica nella chatbox
+        rispostaAuto(){
+            if (this.contacts[this.contatore].messages.push(nuovoMessagio)){
+                let nuovoMessagio2 = {
+                    date: '15:31',
+                    text: 'ok',
+                    status: 'received'
+                };
+                this.contacts[this.contatore].messages.push(nuovoMessagio2);
+                
+            }
+        },
     }
-
 });
+
+
+// Milestone 3
+// ● Aggiunta di un messaggio: l’utente scrive un testo nella parte bassa e digitando
+// “enter” il testo viene aggiunto al thread sopra, come messaggio verde
+// ● Risposta dall’interlocutore: ad ogni inserimento di un messaggio, l’utente riceverà
+// un “ok” come risposta, che apparirà dopo 1 secondo.
