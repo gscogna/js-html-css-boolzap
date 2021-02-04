@@ -1,13 +1,15 @@
 let app = new Vue ({
     el:'#app',
     data:{
+        arrayfiltrato:"",
+        ricercafilter:"",
         messaggioVuoto:"",
         contatore:0,
         contacts: [
             {
                 name: 'Michele',
                 avatar: 'img/avatar_1.jpg',
-                visible: true,
+                visible: false,
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -29,7 +31,7 @@ let app = new Vue ({
             {
                 name: 'Fabio',
                 avatar: 'img/avatar_2.jpg',
-                visible: true,
+                visible: false,
                 messages: [
                     {
                         date: '20/03/2020 16:30:00',
@@ -52,7 +54,7 @@ let app = new Vue ({
 
                 name: 'Samuele',
                 avatar: 'img/avatar_3.jpg',
-                visible: true,
+                visible: false,
                 messages: [
                     {
                         date: '28/03/2020 10:10:40',
@@ -74,7 +76,7 @@ let app = new Vue ({
             {
                 name: 'Luisa',
                 avatar: 'img/avatar_4.jpg',
-                visible: true,
+                visible: false,
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -90,11 +92,9 @@ let app = new Vue ({
             },
         ]
     },
-    mounted(){
-        let timerID = setTimeout(rispostaAuto,1000);
-        clearTimeout(timerID);
+    created() {
+        console.log(moment().locale('it').format('LT'));
     },
-
     methods:{
         // funzione per cambiare indice contatti
         cambio(indice){
@@ -112,26 +112,34 @@ let app = new Vue ({
                 this.contacts[this.contatore].messages.push(nuovoMessagio);
                 this.messaggioVuoto ='';
             }
+            setTimeout(this.rispostaAuto,1000);
+            
         },
 
         // funzione per la risposta automatica nella chatbox
         rispostaAuto(){
-            if (this.contacts[this.contatore].messages.push(nuovoMessagio)){
-                let nuovoMessagio2 = {
-                    date: '15:31',
-                    text: 'ok',
-                    status: 'received'
-                };
-                this.contacts[this.contatore].messages.push(nuovoMessagio2);
-                
-            }
+            let nuovoMessagio2 = {
+                date: '15:31',
+                text: 'ok',
+                status: 'received'
+            };
+            this.contacts[this.contatore].messages.push(nuovoMessagio2);
         },
-    }
+        
+        // funzione per la ricerca automatica nella searchbar
+        ricercaContatti(){
+            this.contacts.forEach(element => {
+                if (element.name.toLowerCase().includes(this.ricercafilter.toLowerCase())){
+                    element.visible == true;
+                    this.contacts.push(arrayfiltrato);
+
+                }else{
+                    element.visible = false;
+                    return this.contacts;
+                }
+            });
+        }
+
+        
+    },
 });
-
-
-// Milestone 3
-// ● Aggiunta di un messaggio: l’utente scrive un testo nella parte bassa e digitando
-// “enter” il testo viene aggiunto al thread sopra, come messaggio verde
-// ● Risposta dall’interlocutore: ad ogni inserimento di un messaggio, l’utente riceverà
-// un “ok” come risposta, che apparirà dopo 1 secondo.
