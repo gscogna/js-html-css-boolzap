@@ -1,28 +1,28 @@
 let app = new Vue ({
     el:'#app',
     data:{
-        arrayfiltrato:"",
         ricercafilter:"",
         messaggioVuoto:"",
+        orario: "",
         contatore:0,
         contacts: [
             {
                 name: 'Michele',
                 avatar: 'img/avatar_1.jpg',
-                visible: false,
+                visible: true,
                 messages: [
                     {
-                        date: '10/01/2020 15:30:55',
+                        date: '05/02/2021 15:30:55',
                         text: 'Hai portato a spasso il cane?',
                         status: 'sent'
                     },
                     {
-                        date: '10/01/2020 15:50:00',
+                        date: '05/02/2021 15:50:00',
                         text: 'Ricordati di dargli da mangiare',
                         status: 'sent'
                     },
                     {
-                        date: '10/01/2020 16:15:22',
+                        date: '05/02/2021 16:15:22',
                         text: 'Tutto fatto!',
                         status: 'received'
                     }
@@ -31,20 +31,20 @@ let app = new Vue ({
             {
                 name: 'Fabio',
                 avatar: 'img/avatar_2.jpg',
-                visible: false,
+                visible: true,
                 messages: [
                     {
-                        date: '20/03/2020 16:30:00',
+                        date: '05/02/2021 16:30:00',
                         text: 'Ciao come stai?',
                         status: 'sent'
                     },
                     {
-                        date: '20/03/2020 16:30:55',
+                        date: '05/02/2021 16:30:55',
                         text: 'Bene grazie! Stasera ci vediamo?',
                         status: 'received'
                     },
                     {
-                        date: '20/03/2020 16:35:00',
+                        date: '05/02/2021 16:35:00',
                         text: 'Mi piacerebbe ma devo andare a fare la spesa.',
                         status: 'sent'
                     }
@@ -52,48 +52,82 @@ let app = new Vue ({
             },
             {
 
-                name: 'Samuele',
+                name: 'Ciatto',
                 avatar: 'img/avatar_3.jpg',
-                visible: false,
+                visible: true,
                 messages: [
                     {
-                        date: '28/03/2020 10:10:40',
-                        text: 'La Marianna va in campagna',
+                        date: '05/02/2021 10:10:40',
+                        text: 'Ci sei?',
                         status: 'received'
                     },
                     {
-                        date: '28/03/2020 10:20:10',
-                        text: 'Sicuro di non aver sbagliato chat?',
+                        date: '05/02/2021 10:20:10',
+                        text: 'si quando vuoi!',
                         status: 'sent'
                     },
                     {
-                        date: '28/03/2020 16:15:22',
-                        text: 'Ah scusa!',
+                        date: '05/02/2021 16:15:22',
+                        text: 'spiegami swift!',
                         status: 'received'
                     }
                 ],
             },
             {
-                name: 'Luisa',
+                name: 'Pina',
                 avatar: 'img/avatar_4.jpg',
-                visible: false,
+                visible: true,
                 messages: [
                     {
-                        date: '10/01/2020 15:30:55',
-                        text: 'Lo sai che ha aperto una nuova pizzeria?',
+                        date: '05/02/2021 09:30:55',
+                        text: 'sei uscita poi?',
                         status: 'sent'
                     },
                     {
-                        date: '10/01/2020 15:50:00',
-                        text: 'Si, ma preferirei andare al cinema',
+                        date: '05/02/2021 09:32:00',
+                        text: 'Come lo sai ?',
+                        status: 'received'
+                    },
+                    {
+                        date: '05/02/2021 09:34:55',
+                        text: 'So sempre tutto!',
+                        status: 'sent'
+                    },
+                    {
+                        date: '05/02/2021 09:35:00',
+                        text: 'Comunque niente di che',
                         status: 'received'
                     }
                 ],
             },
+            {
+
+                name: 'Bruno',
+                avatar: 'img/avatar_5.jpg',
+                visible: true,
+                messages: [
+                    {
+                        date: '05/02/2021 10:10:40',
+                        text: 'Stasera esco con Ilaria',
+                        status: 'received'
+                    },
+                    {
+                        date: '05/02/2021 10:20:10',
+                        text: 'Sicuro di non aver sbagliato chat?',
+                        status: 'sent'
+                    },
+                    {
+                        date: '05/02/2021 16:15:22',
+                        text: 'Ah scusa!',
+                        status: 'received'
+                    }
+                ],
+            }
         ]
     },
     created() {
         console.log(moment().locale('it').format('LT'));
+        console.log(moment().format(" D/MM/YYYY, h:mm a"));
     },
     methods:{
         // funzione per cambiare indice contatti
@@ -105,41 +139,43 @@ let app = new Vue ({
         addMessage(){
             if (this.messaggioVuoto.length > 0){
                 let nuovoMessagio = {
-                    date:'15:30',
+                    date: moment().format(" D/MM/YYYY, h:mm a"),
                     text: this.messaggioVuoto,
                     status:'sent'
                 };
                 this.contacts[this.contatore].messages.push(nuovoMessagio);
                 this.messaggioVuoto ='';
+                setTimeout(this.rispostaAuto,1000);
             }
-            setTimeout(this.rispostaAuto,1000);
             
         },
 
         // funzione per la risposta automatica nella chatbox
         rispostaAuto(){
             let nuovoMessagio2 = {
-                date: '15:31',
+                date: moment().format(" D/MM/YYYY, h:mm a"),
                 text: 'ok',
                 status: 'received'
             };
             this.contacts[this.contatore].messages.push(nuovoMessagio2);
         },
-        
+
+        ultimoMessaggio(){
+
+        },
+
+
         // funzione per la ricerca automatica nella searchbar
         ricercaContatti(){
-            this.contacts.forEach(element => {
-                if (element.name.toLowerCase().includes(this.ricercafilter.toLowerCase())){
-                    element.visible == true;
-                    this.contacts.push(arrayfiltrato);
-
-                }else{
-                    element.visible = false;
-                    return this.contacts;
-                }
-            });
-        }
-
-        
+            if (this.ricercafilter.length > 0){
+                this.contacts.forEach(element => {
+                    if (element.name.toLowerCase().includes(this.ricercafilter.toLowerCase())){
+                        element.visible == true;
+                    }else{
+                        element.visible == false;
+                    }
+                })
+            }
+        }    
     },
 });

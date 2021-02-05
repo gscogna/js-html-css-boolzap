@@ -5,12 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Replica whatsapp</title>
     <link rel="stylesheet" href="css/style.css">
+    <!-- font google -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap" rel="stylesheet">
+    <!-- framework vue -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <!-- libreria moment -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" 
         integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
         crossorigin="anonymous"></script>
+        <!-- fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
         integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
         crossorigin="anonymous" />
@@ -22,9 +26,9 @@
         <div class="left">
         <div class="header-sinistro">
             <div class="logo-utente">
-                <img src="img/avatar_0.gif" alt="nomeutente-avatar">
+                <img src="img/avatar_0.jpg" alt="nomeutente-avatar">
             </div>
-            <span class="modificato">Gerrano &#128077;&#128512;</span>
+            <span class="modificato">Gerrano &#128077;&#128526;</span>
 
             <div class="loghi">
                 <i class="fas fa-circle-notch"></i>
@@ -48,11 +52,14 @@
             <input type="text" v-model="ricercafilter" placeholder="Cerca o inizia una nuova chat">
         </div>
         <div class="contatti">
-            <div class="contatto-primo" v-for="(contact,index) in contacts" :class="(index === contatore) ? 'contatore' :contact" @click="cambio(index)" >
+            <div class="contatto-primo" v-for="(contact,index) in contacts" :class="(index === contatore) ? 'contatore' :contact" @click="cambio(index)" v-if="contact.visible == true" >
                 <ul>
                     <li>
-                        <img :src="contact.avatar" alt="">
-                        <span>{{contact.name}}</span>
+                        <img :src="contact.avatar" alt="logo-avatar">
+                        <div class="formattazione">
+                            <h3>{{contact.name}}<i class="fas fa-chevron-down"></i></h3>
+                            <p>{{contact.messages[contact.messages.length-1].text}}</p> 
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -63,11 +70,11 @@
         <div class="right">
             <div class="header-destro">
                 <div class="logo-utente">
-                    <img :src="contacts[contatore].avatar" alt="">
+                    <img :src="contacts[contatore].avatar" alt="logo-avatar">
                     </div>
                     <div class="info-utente">
                         <p><strong>{{contacts[contatore].name}}</strong></p>
-                        <p>ultimo accesso oggi alle:</p>
+                        <p>ultimo accesso oggi alle:{{contacts[contatore].orario}}</p>
                     </div>
                 <div class="loghi">
                     <i class="fas fa-search"></i>
