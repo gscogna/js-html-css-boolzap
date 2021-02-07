@@ -168,10 +168,10 @@ let app = new Vue ({
         },
         
         // funzione per il dropdown 
-        deleteMessaggio(index){
-            this.contacts.forEach((element,index) => {
-                element.messages[index] = [];
-            });
-        }
+        // deleteMessaggio(index){
+        //     this.contacts.forEach((element,index) => {
+        //         element.messages[index] = [];
+        //     });
+        // }
     },
 });

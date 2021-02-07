@@ -86,7 +86,7 @@
             <!-- sezione della chat -->
             <div class="corpo-destro">
                 <div class="fumetto" :class="sms.status" v-for=" (sms,index) in contacts[contatore].messages">
-                    <p>{{sms.text}}<i class="fas fa-chevron-down" @click="deleteMessaggio(index)"></i></p>
+                    <p>{{sms.text}}</p>
                     <p><small>{{sms.date}}</small></p>
                 </div>
             </div>
