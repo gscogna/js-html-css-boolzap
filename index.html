@@ -49,16 +49,17 @@
         </div>
         <div class="searchbar-sinistro">
             <div><i class="fas fa-search"></i></div>
-            <input type="text" v-model="ricercafilter" placeholder="Cerca o inizia una nuova chat">
+            <input type="text" @keyup="ricercaContatti" v-model="ricercafilter" placeholder="Cerca o inizia una nuova chat">
         </div>
         <div class="contatti">
-            <div class="contatto-primo" v-for="(contact,index) in contacts" :class="(index === contatore) ? 'contatore' :contact" @click="cambio(index)" v-if="contact.visible == true" >
+            <div class="contatto-primo" v-for="(contact,index) in contacts" :class="(index === contatore) ? 'contatore' :contact" @click="cambio(index)" v-if="contact.visible">
                 <ul>
                     <li>
                         <img :src="contact.avatar" alt="logo-avatar">
                         <div class="formattazione">
                             <h3>{{contact.name}}<i class="fas fa-chevron-down"></i></h3>
-                            <p>{{contact.messages[contact.messages.length-1].text}}</p> 
+                            <p>{{contact.messages[contact.messages.length-1].text}}</p>
+                            <!-- <p>{{}}</p>  -->
                         </div>
                     </li>
                 </ul>
@@ -85,7 +86,7 @@
             <!-- sezione della chat -->
             <div class="corpo-destro">
                 <div class="fumetto" :class="sms.status" v-for=" (sms,index) in contacts[contatore].messages">
-                    <p>{{sms.text}}</p>
+                    <p>{{sms.text}}<i class="fas fa-chevron-down" @click="deleteMessaggio(index)"></i></p>
                     <p><small>{{sms.date}}</small></p>
                 </div>
             </div>

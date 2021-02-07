@@ -160,22 +160,18 @@ let app = new Vue ({
             this.contacts[this.contatore].messages.push(nuovoMessagio2);
         },
 
-        ultimoMessaggio(){
-
-        },
-
-
         // funzione per la ricerca automatica nella searchbar
         ricercaContatti(){
-            if (this.ricercafilter.length > 0){
-                this.contacts.forEach(element => {
-                    if (element.name.toLowerCase().includes(this.ricercafilter.toLowerCase())){
-                        element.visible == true;
-                    }else{
-                        element.visible == false;
-                    }
-                })
-            }
-        }    
+            this.contacts.forEach(element => {
+                element.name.toLowerCase().includes(this.ricercafilter.toLowerCase()) ? element.visible = true : element.visible = false;
+            });
+        },
+        
+        // funzione per il dropdown 
+        deleteMessaggio(index){
+            this.contacts.forEach((element,index) => {
+                element.messages[index] = [];
+            });
+        }
     },
 });
